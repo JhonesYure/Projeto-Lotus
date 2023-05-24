@@ -67,5 +67,22 @@ namespace BackEndAPI.Models
                 }
             }
         }
+        //FIND ID
+        public Manager? FindForId(int Id)
+        {
+            using (DatabaseContext dc = new DatabaseContext())
+            {
+                return dc.Usuarios.Find(Id);
+            }
+        }
+        public Manager? GetPostDetail(int Id)
+        {
+            using(var context = new DatabaseContext())
+            {
+                Manager? register = context.Usuarios.Where(r => r.Id == Id).SingleOrDefault();
+
+                return register;
+            }
+        }
     }
 }

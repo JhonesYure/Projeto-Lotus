@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
-import { Image, Text, StyleSheet, View, ScrollView, TouchableOpacity, TextInput, Button, Alert } from 'react-native';
-import { NativeBaseProvider, Box } from 'native-base';
-import { BlurView } from '@react-native-community/blur';
+import React, {Component} from 'react';
+import {
+  Image,
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+} from 'react-native';
+import {NativeBaseProvider, Box} from 'native-base';
+import {BlurView} from '@react-native-community/blur';
 import * as Animatable from 'react-native-animatable';
-import { useNavigation } from '@react-navigation/native';
+/* import {useNavigation} from '@react-navigation/native'; */
 
 class Login extends Component {
   constructor(props) {
@@ -15,8 +24,8 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    const { username, senha } = this.state;
-  
+    const {username, senha} = this.state;
+
     fetch('http://192.168.53.2:5032/lotus/api/Manager/Login', {
       method: 'POST',
       headers: {
@@ -27,8 +36,8 @@ class Login extends Component {
         Senha: senha,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         console.log('Resposta do servidor:', data);
         if (data.message === 'Login successful') {
           // Redirecionar para a página Home
@@ -38,12 +47,11 @@ class Login extends Component {
           Alert.alert('Login Inválido', 'Usuário ou senha incorretos');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Falha ao efetuar login:', error);
         Alert.alert('Erro de Login', 'Falha ao efetuar login');
       });
   };
-  
 
   handleRegister = () => {
     this.props.navigation.navigate('Create');
@@ -57,18 +65,24 @@ class Login extends Component {
           <ScrollView
             contentContainerStyle={styles.scroll}
             horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          >
+            showsHorizontalScrollIndicator={false}>
             <Box>
-              <BlurView style={styles.absolute} blurType="light" blurAmount={10} reducedTransparencyFallbackColor="white">
+              <BlurView
+                style={styles.absolute}
+                blurType="light"
+                blurAmount={10}
+                reducedTransparencyFallbackColor="white">
                 <Animatable.View animation="fadeInUp" style={styles.login}>
-                  <Image source={require('../images/profile.png')} style={styles.photo} />
+                  <Image
+                    source={require('../images/profile.png')}
+                    style={styles.photo}
+                  />
                   <View>
                     <Text style={styles.user}>Usuário</Text>
                     <TextInput
                       style={styles.input}
                       placeholder="Nome de Usuário"
-                      onChangeText={(text) => this.setState({ username: text })}
+                      onChangeText={text => this.setState({username: text})}
                       required
                     />
                   </View>
@@ -78,16 +92,20 @@ class Login extends Component {
                       style={styles.input}
                       placeholder="Sua senha"
                       secureTextEntry={true}
-                      onChangeText={(text) => this.setState({ senha: text })}
+                      onChangeText={text => this.setState({senha: text})}
                     />
                   </View>
                   <View>
-                    <TouchableOpacity style={styles.button} onPress={this.handleLogin}>
+                    <TouchableOpacity
+                      style={styles.button}
+                      onPress={this.handleLogin}>
                       <Text style={styles.txtlogin}>Login</Text>
                     </TouchableOpacity>
                   </View>
                   <TouchableOpacity onPress={this.handleRegister}>
-                    <Text style={styles.txtcreate}>Não possui uma conta? Cadastre-se</Text>
+                    <Text style={styles.txtcreate}>
+                      Não possui uma conta? Cadastre-se
+                    </Text>
                   </TouchableOpacity>
                 </Animatable.View>
               </BlurView>

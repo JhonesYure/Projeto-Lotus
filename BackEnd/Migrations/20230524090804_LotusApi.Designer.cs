@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230523162702_lotus")]
-    partial class lotus
+    [Migration("20230524090804_LotusApi")]
+    partial class LotusApi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,6 @@ namespace BackEnd.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 

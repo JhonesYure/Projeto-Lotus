@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { View, Button, Platform } from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Button, Platform} from 'react-native';
 import PushNotification from 'react-native-push-notification';
-
 
 export default function Notification() {
   useEffect(() => {
@@ -12,7 +11,7 @@ export default function Notification() {
           channelName: 'Default Channel',
           channelDescription: 'A default channel for my app',
           vibrate: true,
-          date: new Date(Date.now() + (60 * 1000))
+          date: new Date(Date.now() + 60 * 1000),
         },
         created => console.log(`createChannel returned '${created}'`)
       );
@@ -23,20 +22,19 @@ export default function Notification() {
       title: 'É bom ver você conosco',
       message: 'Então, qual o assunto do momento ?',
       largeIcon: 'icon',
-     
     });
   }, []);
 
- /*  function handleButtonPress() {
+  /*  function handleButtonPress() {
     PushNotification.localNotification({
       channelId: 'default-channel-id',
       title: 'Notificação de Botão',
       message: 'Você clicou no botão!',
-       
+
     });
   } */
 
- /*  return (
+  /*  return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Button title="Clique aqui para receber uma notificação" onPress={handleButtonPress} />
     </View>

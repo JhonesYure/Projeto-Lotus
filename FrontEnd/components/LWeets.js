@@ -1,6 +1,13 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
-import { NativeBaseProvider, Box, Center } from "native-base";
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import {NativeBaseProvider, Box, Center} from 'native-base';
 
 export default function Weet() {
   const [tweet, setTweet] = useState('');
@@ -20,21 +27,20 @@ export default function Weet() {
           style={styles.input}
           placeholder="Alguma novidade ?"
           value={tweet}
-          onChangeText={(text) => setTweet(text)}
+          onChangeText={text => setTweet(text)}
           maxLength={280}
           multiline
         />
-        
       </View>
       <Center>
         <TouchableOpacity style={styles.button} onPress={handleTweet}>
-            <Text style={styles.buttonText}>Weet</Text>
+          <Text style={styles.buttonText}>Weet</Text>
         </TouchableOpacity>
       </Center>
       <View style={styles.form}>
         <FlatList
           data={tweets}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <View style={styles.tweetContainer}>
               <Text style={styles.tweetText}>{item}</Text>
             </View>
@@ -60,20 +66,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
   },
-  form:
-    {
-        flex:1,
-        backgroundColor:'#c77dff',
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        paddingEnd: '5%',
-        paddingStart: '5%',
-    },
+  form: {
+    flex: 1,
+    backgroundColor: '#c77dff',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    paddingEnd: '5%',
+    paddingStart: '5%',
+  },
   input: {
     flex: 1,
     fontSize: 16,
@@ -81,13 +86,12 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   button: {
-        marginTop: 10,
-        marginBottom:15,
-        backgroundColor: '#272932',
-        width: '35%',
-        borderRadius: 30,
-        paddingVertical: 8,
-        
+    marginTop: 10,
+    marginBottom: 15,
+    backgroundColor: '#272932',
+    width: '35%',
+    borderRadius: 30,
+    paddingVertical: 8,
   },
   buttonText: {
     color: '#FFF',
@@ -102,7 +106,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,

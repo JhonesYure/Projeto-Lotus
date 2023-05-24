@@ -25,7 +25,6 @@ namespace BackEnd.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 

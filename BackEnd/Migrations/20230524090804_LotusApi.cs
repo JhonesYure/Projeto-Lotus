@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BackEnd.Migrations
 {
     /// <inheritdoc />
-    public partial class lotus : Migration
+    public partial class LotusApi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,7 +24,7 @@ namespace BackEnd.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Username = table.Column<string>(type: "varchar(32)", maxLength: 32, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                    Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Senha = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
